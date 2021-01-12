@@ -1,12 +1,21 @@
 <template>
-    <button class="coin" >
+    <button 
+        :id="id"
+        class="coin"
+        :draggable="onDrag"
+        @dragstart="draging"
+    >
         <slot />
     </button>
 </template>
 <script>
 export default {
+    props: ["id", "onDrag"],
     methods: {
-      
+       draging(e) {
+            const target = e.target;
+            e.dataTransfer.setData('coin_n', target.id)         
+        }    
     }
 }
 </script>

@@ -8,19 +8,25 @@
     <div class="total d-flex justify-content-center mt-5 align-items-center">
       <h1 >{{ this.$store.state.counter }}</h1>
     </div>
-    <div class="d-flex justify-content-between mt-5 aligncenter">
+    <box class="d-flex justify-content-between mt-5 aligncenter">
       <coin 
         v-for="c in this.$store.state.coins" 
         :key="c"
-        v-on:click.native="insert(c)"   
+        onDrag="true"
+        :id="c"
+        @click.native="insert(c)"
       >
         {{ c }}
       </coin>
-    </div>
+    </box>
     <div class="drop-zone mt-5">
       <button-app @click.native="refunding" >REFUND</button-app>
     </div>
-
+    <div class="mt-4 ">
+      <box class="box d-flex align-items-center justify-content-center">
+        <h5>DRAG THE COIN OVER HERE</h5>
+      </box>
+    </div>
     <!-- ======== Modal ========= -->
       <b-modal ref="my-modal"  title="Using Component Methods">
 
@@ -57,12 +63,14 @@
   import Coin from './Coin'
   import ButtonApp from './ButtonApp'
   import ModalCancel from './ModalCancel'
+  import Box from './Box'
 
 export default {
     components: {
         "coin": Coin,
         "button-app": ButtonApp,
-        "cancel": ModalCancel
+        "cancel": ModalCancel,
+        "box" : Box
     },
     data(){
         return {
@@ -70,8 +78,8 @@ export default {
         }
     },
     methods: {
-        insert(item) {
-          this.$store.commit("insertingCoin", item)
+        insert(coin){
+          this.$store.commit("insertingCoin", parseInt(coin))
         },
         refunding(){
           console.log("aaaa");
@@ -95,5 +103,10 @@ export default {
 }
 .total h1 {
   font-size: 6rem !important;
+}
+.box {
+    background-color: #fcc83b;    
+    color: #fff;  
+    height: 80px;  
 }
 </style>
