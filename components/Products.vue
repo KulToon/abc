@@ -61,5 +61,6 @@ export default {
 <style scoped>
 .products {
   height: 100vh;
+  background: #f5f5f5;
 }
 </style>

@@ -8,7 +8,7 @@
                 width="100"
                 class="img-fluid card-image logo rounded-circle mb-3 img-thumbnail shadow-sm"
                 />
-                <h5 class="mb-0"> {{ drinking.name }} </h5>
+                <h5 class="mb-0" :class="{'outOfStock' : !outStock  }" > {{ drinking.name }} </h5>
                 <h6 class="mt-1 text-uppercase text-muted">{{ drinking.price }} Baht</h6>
                 <button-app :disabled="!drinking.in_stock" @click.native="buyAction" id="btnShow" ref="btnShow">
                     {{ drinking.in_stock ? "Select" : "Out Of Stock"}}
@@ -26,6 +26,7 @@ export default {
     },
     data() {
         return {
+            outStock: this.drinking.in_stock 
         }
     },
     methods: {
@@ -51,5 +52,9 @@ export default {
 .card-image {
     min-width: 100px;
     min-height: 100px;
+}
+.outOfStock{
+    text-decoration: line-through;
+    color: #777777;
 }
 </style>

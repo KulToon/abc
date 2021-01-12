@@ -3,7 +3,6 @@
       <div class="row" >
           <side-bar/>
           <products-app />
-
       </div>
    </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
-    <div class="coin" >
+    <button class="coin" >
         <slot />
-    </div>
+    </button>
 </template>
 <script>
 export default {
@@ -18,6 +18,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #fff;
     color: #000;
     border-radius: 50%;
     transition: all 0.3s;
@@ -25,9 +26,15 @@ export default {
     font-weight: bold;
     margin-bottom: 3px;
     }
-.coin:hover, .coin:focus {
+.coin:hover {
     background: #ffb500;
     color: #fff;
     border: 0;
+
+}
+.coin:focus{
+    background: #f57224;
+    color: #fff;
+    outline: none;
 }
 </style>

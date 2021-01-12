@@ -11,7 +11,7 @@ export default {
 <style scoped>
 .button {
     width: 100%;
-    background: #ffb500 !important;
+    background: #f57224 !important;
     color: white !important;
     font-weight: bold;
     padding: 5px !important;

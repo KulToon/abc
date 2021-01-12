@@ -9,10 +9,11 @@
             />
             <h5 class="mb-0"> {{ this.$store.state.modalItem.name }} </h5>                  
         </div>
+        <h4 class="text-center mb-3 border-bottom border-warning">Change</h4>
         <div class="d-flex flex-column justify-content-around">
             <div v-for="(c, i) in this.$store.state.refund" :key="i">
                 <div class="d-flex justify-content-around align-items-center /bg-danger">
-                    <coin v-if="c > 0"> {{i}} </coin> <h5 v-if="c > 0"> = {{ c }}</h5>
+                    <coin v-if="c > 0"> {{i}} </coin> <h5 v-if="c > 0"> x {{ c }}</h5>
                 </div>
             </div>
         

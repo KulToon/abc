@@ -37,7 +37,6 @@ export const state = () => ({
           state.modalStatus = "success"      
 
         }else{
-          mutations.calRefund(state, 0)
           state.modalStatus = "fail"      
         }
       },
