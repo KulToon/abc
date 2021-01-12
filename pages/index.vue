@@ -11,7 +11,7 @@
 <script>
 import Sidebar from '../components/Sidebar'
 import Products from '../components/Products'
-
+import axios from 'axios'
 export default {
   components: {
     "side-bar": Sidebar,
@@ -23,11 +23,18 @@ export default {
 
     }
   },
-  asyncData({ app, store }) {
+  // asyncData({ app, store }) {
+  //   const url = 'http://localhost:3000/api/h';
+  //   return app.$axios.get(url).then(res => {
+  //     //console.log(res.data);
+  //     store.commit("productRegister", res.data.data)
+  //   })
+  // }
+  mounted(){
     const url = 'http://localhost:3000/api/h';
-    return app.$axios.get(url).then(res => {
-      //console.log(res.data);
-      store.commit("productRegister", res.data.data)
+    return axios.get(url).then(res => {
+      console.log(res);
+      this.$store.commit("productRegister", res.data.data)
     })
   }
 }
