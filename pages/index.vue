@@ -23,17 +23,17 @@ export default {
 
     }
   },
-  // asyncData({ app, store }) {
-  //   const url = 'http://localhost:3000/api/h';
-  //   return app.$axios.get(url).then(res => {
-  //     //console.log(res.data);
-  //     store.commit("productRegister", res.data.data)
-  //   })
-  // }
+  asyncData({ app, store }) {
+    const url = 'http://localhost:3000/api/h';
+    return app.$axios.get(url).then(res => {
+      //console.log(res.data);
+      store.commit("productRegister", res.data.data)
+    })
+  },
   mounted(){
     const url = 'http://localhost:3000/api/h';
     return axios.get(url).then(res => {
-      console.log(res);
+      //console.log(res);
       this.$store.commit("productRegister", res.data.data)
     })
   }
