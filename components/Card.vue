@@ -10,7 +10,9 @@
                 />
                 <h5 class="mb-0"> {{ drinking.name }} </h5>
                 <h6 class="mt-1 text-uppercase text-muted">{{ drinking.price }} Baht</h6>
-                <button-app @click.native="buyAction" id="btnShow" ref="btnShow">Buy</button-app>
+                <button-app :disabled="!drinking.in_stock" @click.native="buyAction" id="btnShow" ref="btnShow">
+                    {{ drinking.in_stock ? "Select" : "Out Of Stock"}}
+                </button-app>
             </div>
         </div>
 </template>

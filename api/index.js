@@ -18,7 +18,7 @@ const product = {
 			"in_stock": false
 		},
 		{
-			"id": 3,
+			"id": 3, 
 			"name": "Coke",
 			"image": "https://i.imgur.com/Xe1Ivcu.png",
 			"price": 15.0,
@@ -52,7 +52,7 @@ const product = {
 
 
 app.get('/h', (req, res) => {
-  res.json(product)
+  res.status(200).json(product)
 })
 
 

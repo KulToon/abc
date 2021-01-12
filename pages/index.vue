@@ -1,5 +1,5 @@
 <template>
-   <div class="container-fluid py-3">
+   <div class="container-fluid ">
       <div class="row" >
           <side-bar/>
           <products-app />

@@ -14,22 +14,55 @@
         :key="c"
         v-on:click.native="insert(c)"   
       >
-        {{ c }}</coin>
+        {{ c }}
+      </coin>
     </div>
     <div class="drop-zone mt-5">
-      <button-app>INSERT</button-app>
+      <button-app @click.native="refunding" >REFUND</button-app>
     </div>
+
+    <!-- ======== Modal ========= -->
+      <b-modal ref="my-modal"  title="Using Component Methods">
+
+          <template #modal-header>
+            <div>
+              <h5 class="text-center"></h5>
+            </div>
+          </template>
+
+          <b-container fluid>
+            <b-row class="mb-1">
+            <div class="container">
+              <div class="row">
+                <!-- component -->
+               
+                  <cancel ></cancel>
+                <!-- component -->
+              </div>
+            </div>
+          </b-row> 
+          </b-container>
+
+          <template #modal-footer>
+            <div class="w-100">
+              <button-app @click.native="close">Close</button-app>
+            </div>
+          </template>
+    </b-modal>
+
   </div>
 </template>
 
 <script>
-    import Coin from './Coin'
-    import ButtonApp from './ButtonApp'
+  import Coin from './Coin'
+  import ButtonApp from './ButtonApp'
+  import ModalCancel from './ModalCancel'
 
 export default {
     components: {
         "coin": Coin,
-        "button-app": ButtonApp
+        "button-app": ButtonApp,
+        "cancel": ModalCancel
     },
     data(){
         return {
@@ -38,7 +71,17 @@ export default {
     },
     methods: {
         insert(item) {
-            this.$store.commit("insertingCoin", item)
+          this.$store.commit("insertingCoin", item)
+        },
+        refunding(){
+          console.log("aaaa");
+          this.$store.commit("refund")   
+          this.$refs['my-modal'].show()   
+        },
+        close() {
+          this.$store.commit("reset")   
+          this.$refs['my-modal'].hide()
+
         }
     }
 }
@@ -47,8 +90,8 @@ export default {
 <style scoped>
 .navside {
   background: white;
-  box-shadow: 1px 0px 0px 0 rgba(0, 0, 0, 0.3);
-  height: 90vh;
+  box-shadow: 2px 0px 0px 0 rgba(0, 0, 0, 0.3);
+  height: 100vh;
 }
 .total h1 {
   font-size: 6rem !important;
