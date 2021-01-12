@@ -11,12 +11,12 @@
                 <h5 class="mb-0"> {{ drinking.name }} </h5>
                 <h6 class="mt-1 text-uppercase text-muted">{{ drinking.price }} Baht</h6>
                 <button-app @click.native="buyAction" id="btnShow" ref="btnShow">Buy</button-app>
-                
             </div>
         </div>
 </template>
 <script>
 import ButtonApp from './ButtonApp'
+
 export default {
     props: ['drinking'],
     components: {
@@ -24,13 +24,14 @@ export default {
     },
     data() {
         return {
-
         }
     },
     methods: {
         buyAction() {
             const item = this.drinking
             this.$store.commit("buyDrinking", item);
+            this.$emit('openModal');
+            //console.log(this.modalShow);
         },
 
     }
