@@ -35,6 +35,9 @@ export default {
         close(){
             this.$store.commit("colseModal");
         }
+    },
+    beforeDestroy() {
+        this.$store.commit("reset");
     }
 }
 </script>
