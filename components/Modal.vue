@@ -1,5 +1,5 @@
 <template>
-    <b-modal ref="my-modal" v-model="modalShow">
+    <b-modal ref="my-modal" :v-model.sync="useModal">
        <template #modal-header>
         <div>
           <h5 class="text-center"></h5>
@@ -10,9 +10,7 @@
          <b-row class="mb-1">
         <div class="container">
           <div class="row">
-            <!-- <success v-if="this.$store.state.modalStatus == 'success'"/>
-            <fail v-else-if="this.$store.state.modalStatus == 'fail'"/>
-            <cencel v-else /> -->
+            <slot />
           </div>
         </div>
       </b-row> 
@@ -28,10 +26,10 @@
 </template>
 <script>
 export default {
-    props: ["modalShow"],
+    props: ["useModal"],
     data() {
         return {
-
+          show : this.useModal
         }
     },
     methods: {

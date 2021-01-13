@@ -5,18 +5,29 @@ export const state = () => ({
     coins: [10,5,2,1],
     modalStatus: null,
     modalItem: {},
-    refund: {}
+    refund: {},
+    coinInsertList: {
+      10: 0,
+      5: 0,
+      2: 0,
+      1: 0
+    }
   })
   
   export const mutations = {
     productRegister(state, payload) {
+        //fetch product
         state.products = payload
     },
     insertingCoin(state, coin) {
+      //insert coin
+      //state.coinList.coin
+      state.coinInsertList[coin] += 1 
+      console.log(state.coinInsertList);
       state.counter += coin
     },
     calRefund(state, amount){
-      //change
+      //change calculator
       let change = []
       state.coins.forEach((coin, i) => {
         if(amount >= coin){
@@ -35,7 +46,6 @@ export const state = () => ({
           mutations.calRefund(state, amount)
           state.modalItem = item
           state.modalStatus = "success"      
-
         }else{
           state.modalStatus = "fail"      
         }
@@ -49,6 +59,12 @@ export const state = () => ({
         state.refund = {}
         state.counter = 0
         state.modalItem = {}
+        state.coinInsertList= {
+          10: 0,
+          5: 0,
+          2: 0,
+          1: 0
+        }
       },
 
 
